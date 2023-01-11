@@ -108,10 +108,10 @@ resource "aws_security_group" "two_tier_sg" {
 }
 
 resource "aws_db_subnet_group" "two_tier_rds_subnetgroup" {
-         count = var.db_subnet_group == true ? 1 : 0
-         name = "two_tier_rds_subnetgroup"
-         subnet_ids = aws_subnet.two_tier_private_subnet.*.id
-         tags = {
-                  Name = "two_tier_rds_sng"
-         }
+  count      = var.db_subnet_group == true ? 1 : 0
+  name       = "two_tier_rds_subnetgroup"
+  subnet_ids = aws_subnet.two_tier_private_subnet.*.id
+  tags = {
+    Name = "two_tier_rds_sng"
+  }
 }
