@@ -11,7 +11,7 @@ resource "aws_db_instance" "two_tier_db" {
   db_subnet_group_name   = var.db_subnet_group_name
   vpc_security_group_ids = var.vpc_security_group_ids
   identifier             = var.db_identifier
-  skip_final_snapshot    = var.skip_db_snapshot
+  skip_final_snapshot    = true
   tags = {
     Name = "two_tier_db"
   }
