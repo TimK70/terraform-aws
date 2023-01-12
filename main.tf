@@ -18,7 +18,7 @@ module "database" {
   source                 = "./database"
   db_storage             = 10
   db_engine_version      = "5.7.40"
-  db_instance_class      = "db.t2.micro"
+  db_instance_class      = "db.t3.micro"
   dbname                 = var.dbname
   dbuser                 = var.dbuser
   dbpassword             = var.dbpassword
@@ -47,11 +47,11 @@ module "compute" {
   source          = "./compute"
   public_sg       = module.networking.public_sg
   public_subnets  = module.networking.public_subnets
-  instance_count  = 1
+  instance_count  = 2
   instance_type   = "t3.micro"
   vol_size        = 10
-  key_name        = "keytwo_tier"
-  public_key_path = "/home/ec2-user/.ssh/keytwo_tier.pub"
+  key_name        = "two_tierkey"
+  public_key_path = "/home/ec2-user/.ssh/two_tierkey.pub"
   user_data_path  = "${path.root}/userdata.tpl"
   db_endpoint     = module.database.db_endpoint
   dbuser          = var.dbuser
